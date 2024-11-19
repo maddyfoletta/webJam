@@ -1,0 +1,7 @@
+{
+  "name": "webJam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
