@@ -1,4 +1,17 @@
 <ion-content [fullscreen]="true" >
   <h1>Gym Weight Logging</h1>
-  <app-card></app-card>
+  <app-card *ngFor="let workout of workouts"
+    [exercise]="workout.exercise"
+    [date]="workout.date"
+    [weight]="workout.weight"></app-card>
+    
+  <!-- <ion-card *ngFor="let workout of workouts">
+    <ion-card-header>
+      <ion-card-title>{{ workout.exercise }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Date & Weight: {{ workout.dateWeight }}</p>
+      <p>Details: {{ workout.value }}</p>
+    </ion-card-content>
+  </ion-card> -->
 </ion-content>

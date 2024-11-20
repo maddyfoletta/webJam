@@ -29,18 +29,18 @@ export class FirebaseService {
     this.db = getDatabase(this.app);
   }
   
-  async getData(path: string): Promise<any> {
+  async getWorkouts(): Promise<any> {
     const dbRef = ref(this.db);
     try {
-      const snapshot = await get(child(dbRef, path));
+      const snapshot = await get(child(dbRef, 'exercises/'));
       if (snapshot.exists()) {
-        return snapshot.val(); // Return the data
+        return snapshot.val(); // Return the retrieved data
       } else {
-        console.log('No data available');
-        return null;
+        console.log('No workouts found');
+        return {};
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching workouts:', error);
       throw error;
     }
   }

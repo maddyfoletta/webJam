@@ -1,5 +1,5 @@
 import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
@@ -18,11 +18,5 @@ import { FirebaseService } from '../firebase/firebase.service';
   declarations: [Tab1Page, CardComponent]
 })
 export class Tab1PageModule {
-
-  constructor(private firebaseService: FirebaseService){}
-
-  async fetchData(){
-    // const data = 
-  }
-
+  
 }
