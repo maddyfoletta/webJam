@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-logging-card',
@@ -10,5 +10,6 @@ export class LoggingCardComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+  @Input() workoutName!: string; // Input for the workout name
 
 }

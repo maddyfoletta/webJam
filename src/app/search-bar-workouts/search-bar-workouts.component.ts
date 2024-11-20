@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'search-bar-workouts',
@@ -94,7 +94,6 @@ export class SearchBarWorkoutsComponent implements OnInit {
   selectedExercise: string | null = null; // Stores the selected workout
 
   constructor() {}
-
   ngOnInit() {
     this.filteredWorkouts = this.workouts; // Initialize with all workouts
   }
@@ -107,10 +106,14 @@ export class SearchBarWorkoutsComponent implements OnInit {
   }
 
   // Handle selection of a workout
+  @Output() workoutSelected = new EventEmitter<string>();
+  // selectedExercise!: string;
+
   onSelectWorkout(workout: string) {
     this.selectedExercise = workout; // Update the selected exercise
     console.log(`Selected workout: ${this.selectedExercise}`);
     console.log(workout);
-    // Add additional logic here if needed
+    this.workoutSelected.emit(this.selectedExercise);
+    //
   }
 }

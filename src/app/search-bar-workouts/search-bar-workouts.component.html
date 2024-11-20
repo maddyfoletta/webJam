@@ -9,7 +9,6 @@
 
 <!-- Show results only after a search -->
 <div *ngIf="searchQuery && filteredWorkouts.length > 0">
-  <!-- <h3>Search Results:</h3> -->
   <ul>
     <li class="workoutList" *ngFor="let workout of filteredWorkouts" (click)="onSelectWorkout(workout)">
       {{ workout }}
@@ -19,38 +18,3 @@
 
 <!-- Message if no results are found -->
 <p *ngIf="filteredWorkouts.length === 0 && searchQuery">No workouts found.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- IF ALL GOES WRONG: -->
-<!-- <div *ngIf="filteredWorkouts.length; else noResults">
-  <h3>Workouts:</h3>
-  <ul>
-    <li *ngFor="let workout of filteredWorkouts">{{ workout }}</li>
-  </ul>
-</div>
-
-<ng-template #noResults>
-  <p>No workouts found.</p>
-</ng-template> -->
-
-
-<!-- possibly implement: -->
-<!-- <input
-  type="text"
-  [(ngModel)]="searchQuery"
-  placeholder="Search workouts"
-/>
-<button (click)="onSearch()">Search</button> Call the onSearch method -->
