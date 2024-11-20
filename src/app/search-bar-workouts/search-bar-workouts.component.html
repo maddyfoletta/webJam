@@ -8,7 +8,7 @@
 </div>
 
 <!-- Show results only after a search -->
-<div *ngIf="filteredWorkouts.length > 0">
+<div *ngIf="searchQuery && filteredWorkouts.length > 0">
   <!-- <h3>Search Results:</h3> -->
   <ul>
     <li class="workoutList" *ngFor="let workout of filteredWorkouts" (click)="onSelectWorkout(workout)">

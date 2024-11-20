@@ -99,7 +99,7 @@ export class SearchBarWorkoutsComponent implements OnInit {
     this.filteredWorkouts = this.workouts; // Initialize with all workouts
   }
 
-  // Filter the workouts based on the search query
+  // Filter the workouts based on the search
   onSearch() {
     this.filteredWorkouts = this.workouts.filter((workout) =>
       workout.toLowerCase().includes(this.searchQuery.toLowerCase())
