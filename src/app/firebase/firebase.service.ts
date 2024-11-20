@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // Import the functions you need from Firebase SDK
 import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, get, child } from 'firebase/database';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,15 +20,34 @@ const firebaseConfig = {
 })
 export class FirebaseService {
   private app;
+  private db: any;
 
   constructor() {
     // Initialize Firebase
     this.app = initializeApp(firebaseConfig);
     console.log('Firebase initialized successfully');
+    this.db = getDatabase(this.app);
+  }
+  
+  async getData(path: string): Promise<any> {
+    const dbRef = ref(this.db);
+    try {
+      const snapshot = await get(child(dbRef, path));
+      if (snapshot.exists()) {
+        return snapshot.val(); // Return the data
+      } else {
+        console.log('No data available');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
   }
 
   // Optionally, create a method to access Firebase app
   public getApp() {
     return this.app;
   }
+
 }

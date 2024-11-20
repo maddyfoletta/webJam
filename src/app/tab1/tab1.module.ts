@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { CardComponent } from '../card/card.component';
+import { FirebaseService } from '../firebase/firebase.service';
 
 
 @NgModule({
@@ -16,4 +17,12 @@ import { CardComponent } from '../card/card.component';
   ],
   declarations: [Tab1Page, CardComponent]
 })
-export class Tab1PageModule {}
+export class Tab1PageModule {
+
+  constructor(private firebaseService: FirebaseService){}
+
+  async fetchData(){
+    // const data = 
+  }
+
+}
