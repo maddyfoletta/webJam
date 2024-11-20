@@ -5,3 +5,17 @@ ion-searchbar{
   width: 500px;
   margin-left: 20px;
 }
+
+.workoutList{
+  color: rgb(0, 0, 0);
+}
+
+li {
+  cursor: pointer;
+  padding: 8px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
