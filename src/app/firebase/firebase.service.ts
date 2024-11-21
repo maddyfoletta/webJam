@@ -21,6 +21,7 @@ const firebaseConfig = {
 export class FirebaseService {
   private app;
   private db: any;
+  formattedDate: string = '';
 
   constructor() {
     // Initialize Firebase
@@ -30,19 +31,27 @@ export class FirebaseService {
   }
   
   async getWorkouts(): Promise<any> {
-    const dbRef = ref(this.db);
+    const dbRef = ref(getDatabase());
     try {
-      const snapshot = await get(child(dbRef, 'exercises/'));
+      const snapshot = await get(child(dbRef, 'dates/'));  // Await the Firebase data
       if (snapshot.exists()) {
-        return snapshot.val(); // Return the retrieved data
+        const data = snapshot.val();
+        // console.log('Fetched data:', data);  // Log the data for debugging
+        return data;
       } else {
-        console.log('No workouts found');
-        return {};
+        console.log('No data available');
+        return [];
       }
     } catch (error) {
-      console.error('Error fetching workouts:', error);
-      throw error;
+      console.error('Error fetching data:', error);
+      throw error;  // Ensure errors are propagated for further handling
     }
+  }
+
+  //11-20-2024
+  async createWorkoutObject(){
+    const dbRef = ref(getDatabase());
+
   }
 
   writeStuff(workout: string, reps: string, weight: string, time: string){
@@ -55,6 +64,17 @@ export class FirebaseService {
   // Optionally, create a method to access Firebase app
   public getApp() {
     return this.app;
+  }
+
+  getTime(): string {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, '0');  // Get month (0-indexed, so add 1)
+    const day = String(today.getDate()).padStart(2, '0');  // Get day
+    const year = today.getFullYear();  // Get year
+
+    this.formattedDate = `${month}-${day}-${year}`;  // Format as MM-DD-YYYY
+    console.log(this.formattedDate);  // Outputs the formatted date to the console
+    return this.formattedDate;
   }
 }
 

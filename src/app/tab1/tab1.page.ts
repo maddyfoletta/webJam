@@ -14,13 +14,23 @@ export class Tab1Page implements OnInit{
   async ngOnInit() {
     console.log('Initializing Tab1Page...');
     try {
-      const data = await this.firebaseService.getWorkouts();
+      const data =  await this.firebaseService.getWorkouts();
+      
+      // console.log(this.workouts);
+      // console.log("hello");
+      // console.log(data);
+
       console.log('Raw data:', data);
-      this.workouts = this.parseWorkouts(data);
+      // this.workouts = this.parseWorkouts(data);
       // console.log('Parsed workouts:', this.workouts);
     } catch (error) {
       console.error('Error loading workouts:', error);
     }
+  }
+
+  private parseData(data: any): any{
+    console.log(data[0]);
+   
   }
 
   //   {
@@ -32,22 +42,22 @@ export class Tab1Page implements OnInit{
 //     }
 // }
 
-private parseWorkouts(data: any): any[] {
-  const workouts = [];
-  for (const exercise in data) {
-    if (data.hasOwnProperty(exercise)) {
-      const records = data[exercise];
-      for (const date in records) {
-        if (records.hasOwnProperty(date)) {
-          workouts.push({
-            exercise,
-            date,
-            weight: records[date]
-          });
-        }
-      }
-    }
-  }
-  return workouts;
-}
+// private parseWorkouts(data: any): any[] {
+//   const workouts = [];
+//   for (const exercise in data) {
+//     if (data.hasOwnProperty(exercise)) {
+//       const records = data[exercise];
+//       for (const date in records) {
+//         if (records.hasOwnProperty(date)) {
+//           workouts.push({
+//             exercise,
+//             date,
+//             weight: records[date]
+//           });
+//         }
+//       }
+//     }
+//   }
+//   return workouts;
+// }
 }

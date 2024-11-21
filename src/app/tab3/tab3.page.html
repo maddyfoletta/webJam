@@ -1,16 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title>Personalized Workout</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Personalized Workout</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <div class="container">
+    <ion-label>Select Tags:</ion-label>
+    <ion-chip
+      *ngFor="let tag of tags"
+      [color]="selectedTags.includes(tag) ? 'primary' : 'light'"
+      (click)="toggleTag(tag)"
+    >
+      {{ tag }}
+    </ion-chip>
+
+    <ion-button expand="block" (click)="generateWorkout()">Generate Workout</ion-button>
+
+    <ion-card *ngIf="workoutPlan">
+      <ion-card-header>
+        <ion-card-title>Your Workout Plan</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ workoutPlan }}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
