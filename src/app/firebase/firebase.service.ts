@@ -29,7 +29,7 @@ export class FirebaseService {
     console.log('Firebase initialized successfully');
     this.db = getDatabase(this.app);
   }
-  
+
   async getWorkouts(): Promise<any> {
     const dbRef = ref(getDatabase());
     try {
@@ -58,7 +58,7 @@ export class FirebaseService {
     const db = getDatabase();
     set(ref(db, 'dates/' + time + '/' + workout), {rep: reps, weights: weight});
   }
-  
+
 
 
   // Optionally, create a method to access Firebase app
