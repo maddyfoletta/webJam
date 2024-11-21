@@ -3,6 +3,9 @@ from flask_cors import CORS
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import google.generativeai as genai
+import typing_extensions as typing
+import json
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -19,16 +22,27 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 def generate_workout():
     data = request.json
     keywords = data.get("keywords", "")
+<<<<<<< HEAD
+    
+    class Workout(typing.TypedDict):
+        goals: str
+        day_workouts_with_description: list[list[str]]
+        important_considerations: str
+=======
     print("PRINTING NOW")
+>>>>>>> 61e665957d5e9c85ac01f7ff427351ca9453db95
 
     if not keywords:
         return jsonify({"error": "Keywords are required"}), 400
 
     # Example AI prompt and response generation
     prompt = f"You are a personal trainer. Given the following goals, generate a workout plan for your client."
-    response = model.generate_content([prompt, keywords])
+    response = model.generate_content([prompt, 'full body'],
+    generation_config=genai.GenerationConfig(response_mime_type="application/json", response_schema=list[Workout]))
 
+    #workouts = json.loads(response.text)
     return jsonify({"workout_plan": response.text})
+    
 
 
 if __name__ == "__main__":

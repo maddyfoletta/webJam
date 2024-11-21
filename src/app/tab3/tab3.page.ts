@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class Tab3Page {
   tags: string[] = ['Lose Weight', 'Build Muscle', 'Improve Endurance', 'Flexibility', 'Cardio'];
   selectedTags: string[] = [];
-  workoutPlan: string | null = null;
+  workoutPlan: string[] | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +34,7 @@ export class Tab3Page {
         (response) => {
           if (response && response.workout_plan) {
             this.workoutPlan = response.workout_plan;
+            console.log('Workout Plan:', this.workoutPlan);
           } else {
             console.error("No workout plan returned:", response);
             alert('Error: No workout plan returned.');
