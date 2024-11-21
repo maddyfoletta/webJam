@@ -6,15 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent  implements OnInit {
-  @Input() exercise: string = '';
-  @Input() weight: any = 0;
-  @Input() date: string = '';
+  @Input() date!: string;
+  @Input() exercises: any[] = [];
   constructor() { }
 
 
   ngOnInit(){}
-
-
-
 }
 

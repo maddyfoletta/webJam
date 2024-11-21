@@ -15,12 +15,18 @@ export class Tab1Page implements OnInit{
     console.log('Initializing Tab1Page...');
     try {
       const data =  await this.firebaseService.getWorkouts();
+      this.workouts = this.transformData(data);
+       console.log(this.workouts);
+      // console.log(this.workouts[0]);
       
+
       // console.log(this.workouts);
       // console.log("hello");
       // console.log(data);
 
       console.log('Raw data:', data);
+      // this.parseData(data);
+      
       // this.workouts = this.parseWorkouts(data);
       // console.log('Parsed workouts:', this.workouts);
     } catch (error) {
@@ -28,10 +34,29 @@ export class Tab1Page implements OnInit{
     }
   }
 
-  private parseData(data: any): any{
-    console.log(data[0]);
-   
+  private transformData(data: any): { date: string; exercises: any[] }[] {
+    return Object.keys(data).map((date) => ({
+      date,
+      exercises: Object.entries(data[date]).map(([exercise]) => ({
+        exercise
+      })),
+    }));
   }
+
+  
+  //[11-20-2024: {biceps}]
+
+  // private parseData(data: any): any{
+  //   const entries = Object.entries(data);
+  //   const single = entries[0];
+  //   console.log(entries);
+  //   console.log(single);
+  //   console.log(single[0]); //date
+    
+  //   console.log(Object.keys(single[1] as Object));
+    
+   
+  // }
 
   //   {
 //     "biceps": {
