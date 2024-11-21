@@ -65,6 +65,7 @@ yarn-error.log
 testem.log
 /typings
 
+keys.env
 # System files
 .DS_Store
 Thumbs.db
