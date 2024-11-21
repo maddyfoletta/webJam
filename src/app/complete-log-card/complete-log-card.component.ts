@@ -10,9 +10,7 @@ export class CompleteLogCardComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-  showCompleteLogCard: boolean = false; // Controls visibility of the card
-  reps: number | null = null; // Stores the reps
-  weight: number | null = null; // Stores the weight
-  workoutName: string = ''; // Name of the workout
-
+  // enterClick(){
+  //   //FUNCTIONALITY HERE TO DO SOMETING WHEN YOU LOG MAYBE SAY SOMETHING LIKE "LOGGING DONE"
+  // }
 }

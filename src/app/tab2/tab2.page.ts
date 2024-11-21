@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss'],
 })
+
 export class Tab2Page {
   selectedWorkout: string | null = null; // Holds the selected workout
   searchQuery: string = ''; // Tracks the user's search input
