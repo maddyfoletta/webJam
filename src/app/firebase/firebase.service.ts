@@ -9,8 +9,8 @@ import 'firebase/auth';
 
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+// import { AngularFireModule } from "@angular/fire/compat";
+// import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFireAuthModule } from '@angular/fire/auth'; // Import this module
 
@@ -93,7 +93,7 @@ export class FirebaseService {
   }
 
   ///AUTHENTICATION
-  
+
 
   // // Login with email and password
   // login(email: string, password: string) {
