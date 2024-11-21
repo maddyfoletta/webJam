@@ -2,12 +2,28 @@ ion-content{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    --background: #1B1725;
+    --background: #1B1725
 }
 
 h1{
     color:white;
-    margin-top: 10%;
     text-align: center;
 }
 
+
+h2, p{
+    color: white;
+}
+
+ion-card-title{
+    color: white;
+}
+
+ion-card{
+    --background: #7BAAF7;
+}
+
+ion-item{
+    --background: #7BAAF7;
+}
+// #534B62

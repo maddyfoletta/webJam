@@ -26,15 +26,39 @@ export class Tab1Page implements OnInit{
   }
 
   private transformData(data: any): { date: string; exercises: any[] }[] {
-    return Object.keys(data).map((date) => ({
-      date,
-      exercises: Object.keys(data[date]).map((exercise) => ({
-        exercise,
-        rep: data[date][exercise].rep || "N/A",
-        weights: data[date][exercise].weights || "N/A",
-      })),
-    }));
+    return Object.keys(data)
+      .map((date) => ({
+        date,
+        exercises: Object.keys(data[date]).map((exercise) => ({
+          exercise,
+          rep: data[date][exercise].rep || "N/A",
+          weights: data[date][exercise].weights || "N/A",
+        })),
+      }))
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
+
+  formatDate(date: string): string {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June', 'July', 
+      'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const [month, day, year] = date.split('-');
+    return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+  }
+  
+
+  // private transformData(data: any): { date: string; exercises: any[] }[] {
+  //   return Object.keys(data).map((date) => ({
+  //     date,
+  //     exercises: Object.keys(data[date]).map((exercise) => ({
+  //       exercise,
+  //       rep: data[date][exercise].rep || "N/A",
+  //       weights: data[date][exercise].weights || "N/A",
+  //     })),
+  //   }));
+  // }
 
   
   //[11-20-2024: {biceps}]
