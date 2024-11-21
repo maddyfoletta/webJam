@@ -113,6 +113,7 @@ export class SearchBarWorkoutsComponent implements OnInit {
     this.selectedExercise = workout; // Update the selected exercise
     console.log(`Selected workout: ${this.selectedExercise}`);
     console.log(workout);
+    this.filteredWorkouts = [];
     this.workoutSelected.emit(this.selectedExercise);
     //
   }

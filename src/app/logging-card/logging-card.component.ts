@@ -19,7 +19,9 @@ export class LoggingCardComponent  implements OnInit {
 
   enterClick(){
     console.log(this.reps, this.weight, this.workoutName);
+    //sending info to database
     this.firebaseService.writeStuff(this.workoutName, this.reps, this.weight, this.getTime());
+    //FUNCTIONALITY HERE TO DO SOMETING WHEN YOU LOG MAYBE SAY SOMETHING LIKE "LOGGING DONE"
   }
   //bench press : {date: 11-20-2024, reps: 15, weight: 200}
 
