@@ -19,9 +19,9 @@ export class LoggingCardComponent  implements OnInit {
 
   enterClick(){
     console.log(this.reps, this.weight, this.workoutName);
-    console.log(this.getTime());
-    
+    this.firebaseService.writeStuff(this.workoutName, this.reps, this.weight, this.getTime());
   }
+  //bench press : {date: 11-20-2024, reps: 15, weight: 200}
 
   getTime(): string {
     const today = new Date();
