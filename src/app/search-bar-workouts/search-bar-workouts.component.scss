@@ -2,13 +2,29 @@ ion-searchbar{
   margin-top: 60px;
   color: rgb(0, 0, 0);
   text-decoration-color: rgb(255, 255, 255);
-  width: 500px;
   margin-left: 20px;
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow the items to wrap to the next line */
 }
 
-.workoutList{
-  color: rgb(0, 0, 0);
+
+ul {
+  list-style-type: none; /* Remove bullet points */
+  padding-left: 0; /* Remove default padding */
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow the items to wrap to the next line */
+  justify-content: space-between; /* Space items evenly across the container */
 }
+
+
+.workoutList {
+  color: rgb(0, 0, 0);
+  flex: 1 1 30%; /* This makes each item take up 30% of the available width */
+  margin: 10px; /* Adjust margin for spacing between items */
+  min-width: 200px; /* Ensure items don't get too small */
+  text-align: center; /* Optionally center the text inside each item */
+}
+
 
 li {
   cursor: pointer;
