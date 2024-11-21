@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // Import the functions you need from Firebase SDK
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, get, child } from 'firebase/database';
+import { getDatabase, ref, get, child, DatabaseReference, set } from 'firebase/database';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -45,9 +45,16 @@ export class FirebaseService {
     }
   }
 
+  writeStuff(workout: string, reps: string, weight: string, time: string){
+    const db = getDatabase();
+    set(ref(db, 'dates/' + time + '/' + workout), {rep: reps, weights: weight});
+  }
+  
+
+
   // Optionally, create a method to access Firebase app
   public getApp() {
     return this.app;
   }
-
 }
+
