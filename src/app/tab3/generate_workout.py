@@ -22,19 +22,15 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 def generate_workout():
     data = request.json
     keywords = data.get("keywords", "")
-<<<<<<< HEAD
     
     class Workout(typing.TypedDict):
         goals: str
         day_workouts_with_description: list[list[str]]
         important_considerations: str
-=======
-    print("PRINTING NOW")
->>>>>>> 61e665957d5e9c85ac01f7ff427351ca9453db95
 
     if not keywords:
         return jsonify({"error": "Keywords are required"}), 400
-
+    
     # Example AI prompt and response generation
     prompt = f"You are a personal trainer. Given the following goals, generate a workout plan for your client."
     response = model.generate_content([prompt, 'full body'],
