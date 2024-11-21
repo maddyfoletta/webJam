@@ -1,6 +1,20 @@
+
+
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 // Import the functions you need from Firebase SDK
 import { initializeApp } from 'firebase/app';
+import 'firebase/auth';
+
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFireAuthModule } from '@angular/fire/auth'; // Import this module
+
+
 import { getDatabase, ref, get, child, DatabaseReference, set } from 'firebase/database';
 
 // Your web app's Firebase configuration
@@ -23,13 +37,14 @@ export class FirebaseService {
   private db: any;
   formattedDate: string = '';
 
-  constructor() {
+
+  constructor( private router: Router) {
     // Initialize Firebase
     this.app = initializeApp(firebaseConfig);
     console.log('Firebase initialized successfully');
     this.db = getDatabase(this.app);
   }
-  
+
   async getWorkouts(): Promise<any> {
     const dbRef = ref(getDatabase());
     try {
@@ -58,7 +73,7 @@ export class FirebaseService {
     const db = getDatabase();
     set(ref(db, 'dates/' + time + '/' + workout), {rep: reps, weights: weight});
   }
-  
+
 
 
   // Optionally, create a method to access Firebase app
@@ -76,5 +91,29 @@ export class FirebaseService {
     console.log(this.formattedDate);  // Outputs the formatted date to the console
     return this.formattedDate;
   }
+
+  ///AUTHENTICATION
+  
+
+  // // Login with email and password
+  // login(email: string, password: string) {
+  //   return this.afAuth.signInWithEmailAndPassword(email, password);
+  // }
+
+  // // Register new user
+  // register(email: string, password: string) {
+  //   return this.afAuth.createUserWithEmailAndPassword(email, password);
+  // }
+
+  // // Log out the user
+  // logout() {
+  //   return this.afAuth.signOut();
+  // }
+
+  // // Get current user
+  // getCurrentUser() {
+  //   return this.afAuth.authState;
+  // }
+
 }
 

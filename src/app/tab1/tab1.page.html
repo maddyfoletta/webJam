@@ -1,41 +1,19 @@
-<!-- <ion-content [fullscreen]="true" >
-  <h1>Previous Weight Logs</h1>
-  <app-card *ngFor="let workout of workouts"></app-card>
-    
-<ion-card *ngFor="let workout of workouts">
-    <ion-card-header>
-      <ion-card-title>{{ workout.exercise }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Date & Weight: {{ workout.dateWeight }}</p>
-      <p>Details: {{ workout.value }}</p>
-    </ion-card-content>
-  </ion-card> -->
-<!-- </ion-content> -->
-
-<!-- <ion-content [fullscreen]="true">
-  <h1>Previous Weight Logs</h1>
-
-  <app-card 
-    *ngFor="let workout of workouts"
-    [date]="workout.date"
-    [exercises]="workout.exercises">
-  </app-card>
-</ion-content> -->
+<!-- <ion-header>
+  ion-toolbar
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <h1>Previous Weight Logs</h1>
-
   <ion-card *ngFor="let workout of workouts">
     <ion-card-header>
-      <ion-card-title>Workout on {{ workout.date }}</ion-card-title>
+      <ion-card-title>{{ formatDate(workout.date) }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let exercise of workout.exercises">
           <ion-label>
-            <h2>{{ exercise.exercise }}</h2>
+            <h2 style="font-weight: 800;">{{ exercise.exercise }}</h2>
             <p>Reps: {{ exercise.rep }}</p>
             <p>Weight: {{ exercise.weights }} lbs</p>
           </ion-label>
