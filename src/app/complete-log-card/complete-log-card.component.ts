@@ -10,7 +10,4 @@ export class CompleteLogCardComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-  // enterClick(){
-  //   //FUNCTIONALITY HERE TO DO SOMETING WHEN YOU LOG MAYBE SAY SOMETHING LIKE "LOGGING DONE"
-  // }
 }

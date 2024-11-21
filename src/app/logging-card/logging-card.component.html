@@ -1,4 +1,41 @@
-<div class="ion-card-wrapper" *ngIf="workoutName">
+<div class="ion-card-wrapper">
+  <!-- Logging Card -->
+  <ion-card class="ion-card" *ngIf="showLoggingCard && workoutName">
+    <ion-card-header>
+      <ion-card-title>{{ workoutName }}</ion-card-title>
+      <ion-card-subtitle>Weight:</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item class="enter-reps">
+        <ion-input
+          class="enter-reps-input"
+          label="Enter reps: "
+          placeholder="Enter number of reps"
+          [(ngModel)]="reps"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="enter-new-weight">
+        <ion-input
+          [(ngModel)]="weight"
+          label="Enter new weight: "
+          placeholder="Enter weight in lbs"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Button triggers the enterClick() function -->
+      <ion-button (click)="enterClick()">Enter new weight</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Complete Log Card -->
+  <app-complete-log-card *ngIf="showCompleteLogCard"></app-complete-log-card>
+</div>
+
+
+
+
+<!-- <div class="ion-card-wrapper" *ngIf="workoutName">
   <ion-card class="ion-card">
     <ion-card-header>
       <ion-card-title>{{ workoutName }}</ion-card-title>
@@ -28,4 +65,4 @@
   </ion-card>
   <app-complete-log-card *ngIf="showCompleteLogCard"></app-complete-log-card>
 
-</div>
+</div> -->

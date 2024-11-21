@@ -12,6 +12,8 @@ export class LoggingCardComponent  implements OnInit {
   @Input() weight: string = '';
   formattedDate: string = '';
   showCompleteLogCard: boolean = false;
+  showLoggingCard: boolean = true;
+
 
 
   constructor(private firebaseService: FirebaseService) { }
@@ -26,8 +28,16 @@ export class LoggingCardComponent  implements OnInit {
     //sending info to database
     this.firebaseService.writeStuff(this.workoutName, this.reps, this.weight, this.getTime());
     this.showCompleteLogCard = true;
+    this.showLoggingCard = false;
     this.reps = '';
     this.weight = '';
+
+    setTimeout(() => {
+      this.showCompleteLogCard = false;
+    }, 2000); // 3000ms = 3 seconds
+    // this.searchQuery = ''; // Clear search input if needed
+    // this.filteredWorkouts = this.workouts; // Reset filtered workouts to all workouts
+
   }
   getTime(): string {
     const today = new Date();
