@@ -11,16 +11,18 @@
           class="enter-reps-input"
           label="Enter reps: "
           placeholder="Enter number of reps"
+          [(ngModel)]="reps"
         ></ion-input>
       </ion-item>
       <ion-item class="enter-new-weight">
         <ion-input
+          [(ngModel)]="weight"
           label="Enter new weight: "
           placeholder="Enter weight in lbs"
         ></ion-input>
       </ion-item>
 
-      <ion-button>Enter new weight</ion-button>
+      <ion-button (click)="enterClick()">Enter new weight</ion-button>
     </ion-card-content>
   </ion-card>
 </div>
