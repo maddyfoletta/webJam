@@ -11,7 +11,15 @@ export class Tab3Page {
   selectedTags: string[] = [];
   workoutPlan: string[] | null = null;
 
+  //DELETE IF
+  selectedWorkout: string | null = null; // Currently selected workout
+
   constructor(private http: HttpClient) {}
+
+  //DELETE IF
+  onWorkoutSelected(workout: string) {
+    this.selectedWorkout = workout; // Update the workout
+  }
 
   toggleTag(tag: string) {
     if (this.selectedTags.includes(tag)) {
@@ -26,9 +34,9 @@ export class Tab3Page {
       alert('Please select at least one tag!');
       return;
     }
-  
+
     const keywords = this.selectedTags.join(', ');
-  
+
     this.http.post<any>('http://127.0.0.1:5000', { keywords })
       .subscribe(
         (response) => {
@@ -46,4 +54,4 @@ export class Tab3Page {
         }
       );
   }
-}  
+}

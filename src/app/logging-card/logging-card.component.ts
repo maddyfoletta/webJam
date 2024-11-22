@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { FirebaseService } from '../firebase/firebase.service';
 import { AlertController } from '@ionic/angular';
 
@@ -52,6 +52,13 @@ export class LoggingCardComponent  implements OnInit {
     });
 
     await alert.present(); // Show the alert
+  }
+
+  //DELETE IF
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['workoutName']) {
+      this.showLoggingCard = true; // Reset the logging card when a new workout is selected
+    }
   }
 
 }

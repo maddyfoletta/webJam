@@ -106,7 +106,6 @@ export class SearchBarWorkoutsComponent implements OnInit {
       workout.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
-
   // Handle selection of a workout
   @Output() workoutSelected = new EventEmitter<string>();
   // selectedExercise!: string;
