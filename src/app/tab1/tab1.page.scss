@@ -1,6 +1,13 @@
 ion-app{
     background-color: #1B1725;
 }
+ion-refresher{
+    --background-color: red;
+}
+
+ion-refresher-content{
+    --background: red;
+}
 
 ion-content{
     display: grid;
