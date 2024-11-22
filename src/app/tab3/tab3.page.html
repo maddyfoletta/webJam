@@ -11,44 +11,107 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-item class="input-item">
+    <ion-label position="floating" class="input-label"></ion-label>
+    <ion-input [(ngModel)]="searchQuery" placeholder="e.g., Build Muscle, Cardio" class="input-field"></ion-input>
+  </ion-item>
+
   <div class="container">
-    <ion-label>Select Tags:</ion-label>
+    <ion-label class="select-tags-label">Select Tags:</ion-label>
     <ion-chip
       *ngFor="let tag of tags"
       [color]="selectedTags.includes(tag) ? 'primary' : 'light'"
       (click)="toggleTag(tag)"
+      class="tag-chip"
     >
       {{ tag }}
     </ion-chip>
 
-    <ion-item>
-      <ion-label position="floating">Or Enter Your Goals:</ion-label>
-      <ion-input [(ngModel)]="searchQuery" placeholder="e.g., Build Muscle, Cardio"></ion-input>
-    </ion-item>
+    <ion-button expand="block" (click)="generateWorkout()" class="generate-button">
+      Generate Workout
+    </ion-button>
 
-    <ion-button expand="block" (click)="generateWorkout()">Generate Workout</ion-button>
-
-    <ion-card *ngIf="workoutPlan">
+    <ion-card *ngIf="workoutPlan" class="workout-card">
       <ion-card-header>
         <ion-card-title>Your Workout Plan</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <div *ngFor="let workout of workoutPlan">
-          <h3>Goal: {{ workout.goals }}</h3>
+          <h3 class="goal-title">Goal: {{ workout.short_objective }}</h3>
           
-          <h4>Daily Workouts:</h4>
-          <ul>
-            <li *ngFor="let day of workout.day_workouts_with_description[0]">
+          <h4 class="section-title">Daily Workouts:</h4>
+          <ul class="workout-list">
+            <li *ngFor="let day of workout.day_workouts_with_description[0]" class="workout-item">
               {{ day }}
             </li>
           </ul>
-        
-          <h4>Important Considerations:</h4>
-          <p>{{ workout.important_considerations }}</p>
-        
-          <hr />
-        </div>               
+
+          <h4 class="section-title">Conclusion:</h4>
+          <p class="important-considerations">{{ workout.conclusion }}</p>
+
+          <hr class="separator" />
+        </div>
       </ion-card-content>
     </ion-card>
   </div>
 </ion-content>
+
+<!-- Style tweaks -->
+<style>
+  .input-item {
+    margin-bottom: 20px;
+  }
+
+  .select-tags-label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .tag-chip {
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  .tag-chip:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .generate-button {
+    margin-top: 20px;
+  }
+
+  .workout-card {
+    margin-top: 30px;
+  }
+
+  .goal-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .workout-list {
+    padding-left: 20px;
+  }
+
+  .workout-item {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .important-considerations {
+    font-size: 1rem;
+    color: var(--ion-text-color);
+  }
+
+  .separator {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+  }
+</style>

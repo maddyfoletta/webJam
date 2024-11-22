@@ -11,9 +11,9 @@ export class Tab3Page {
   selectedTags: string[] = [];
   searchQuery: string = ''; // For search bar input
   workoutPlan: { 
-    goals: string; 
+    short_objective: string; 
     day_workouts_with_description: string[][]; 
-    important_considerations: string 
+    conclusion: string 
   }[] | null = null;
 
   constructor(private http: HttpClient) {}
@@ -34,7 +34,7 @@ export class Tab3Page {
       return;
     }
 
-    this.http.post<any>('http://localhost:5100', { keywords })
+    this.http.post<any>('http://localhost:5200', { keywords })
       .subscribe(
         (response) => {
           try {

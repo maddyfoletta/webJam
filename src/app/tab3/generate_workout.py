@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 #CORS(app, origins=["http://localhost:8100"])
 
-load_dotenv(dotenv_path='webJam/src/app/tab3/keys.env')
+load_dotenv(dotenv_path='src/app/tab3/keys.env')
 
 api_key = os.getenv('API_KEY')
 print(api_key)
@@ -25,15 +25,15 @@ def generate_workout():
     keywords = data.get("keywords", "")
     
     class Workout(typing.TypedDict):
-        goals: str
+        short_objective: str
         day_workouts_with_description: list[list[str]]
-        important_considerations: str
+        conclusion: str
 
     if not keywords:
         return jsonify({"error": "Keywords are required"}), 400
     
     # Example AI prompt and response generation
-    prompt = f"You are a personal trainer. Given the following goals, generate a workout plan for your client."
+    prompt = f"You are a personal trainer. Determine their objective and generate a workout plan tailored for your client's goals. Add a short conclusion summarizing the general basis of your suggestion."
     response = model.generate_content([prompt, 'full body'],
     generation_config=genai.GenerationConfig(response_mime_type="application/json", response_schema=list[Workout]))
 
@@ -43,4 +43,4 @@ def generate_workout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port='5100')
+    app.run(debug=True, host='0.0.0.0', port='5200')
