@@ -2,9 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('././login/login-routing.module').then(m => m.LoginPageRoutingModule)
+  // },
   {
-    path: '',
-    loadChildren: () => import('././login/login-routing.module').then(m => m.LoginPageRoutingModule)
+    path:'',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'tabs',
