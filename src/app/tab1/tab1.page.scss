@@ -1,8 +1,12 @@
+ion-app{
+    background-color: #1B1725;
+}
+
 ion-content{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    --background: #1B1725
+    --background: #1B1725;
 }
 
 h1{

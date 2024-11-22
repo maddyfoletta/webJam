@@ -8,8 +8,9 @@
     <ion-card-header>
       <ion-card-title>{{ formatDate(workout.date) }}</ion-card-title>
     </ion-card-header>
-
+ 
     <ion-card-content>
+      <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)"></ion-refresher>
       <ion-list>
         <ion-item *ngFor="let exercise of workout.exercises">
           <ion-label>

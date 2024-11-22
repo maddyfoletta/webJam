@@ -48,58 +48,11 @@ export class Tab1Page implements OnInit{
     return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
   }
   
-
-  // private transformData(data: any): { date: string; exercises: any[] }[] {
-  //   return Object.keys(data).map((date) => ({
-  //     date,
-  //     exercises: Object.keys(data[date]).map((exercise) => ({
-  //       exercise,
-  //       rep: data[date][exercise].rep || "N/A",
-  //       weights: data[date][exercise].weights || "N/A",
-  //     })),
-  //   }));
-  // }
-
+  onRefresh(event: { target: { complete: () => void; }; }) {
+    setTimeout(() => {
+      window.location.reload(); // Refreshes the entire page
+      event.target.complete(); // Marks the refresh event as complete
+    }, 2000);
+  }
   
-  //[11-20-2024: {biceps}]
-
-  // private parseData(data: any): any{
-  //   const entries = Object.entries(data);
-  //   const single = entries[0];
-  //   console.log(entries);
-  //   console.log(single);
-  //   console.log(single[0]); //date
-    
-  //   console.log(Object.keys(single[1] as Object));
-    
-   
-  // }
-
-  //   {
-//     "biceps": {
-//         "11-19-2024": "15"
-//     },
-//     "leg-press": {
-//         "11-19-2024": 200
-//     }
-// }
-
-// private parseWorkouts(data: any): any[] {
-//   const workouts = [];
-//   for (const exercise in data) {
-//     if (data.hasOwnProperty(exercise)) {
-//       const records = data[exercise];
-//       for (const date in records) {
-//         if (records.hasOwnProperty(date)) {
-//           workouts.push({
-//             exercise,
-//             date,
-//             weight: records[date]
-//           });
-//         }
-//       }
-//     }
-//   }
-//   return workouts;
-// }
 }
