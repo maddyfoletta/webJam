@@ -6,12 +6,19 @@
 </ion-header>
 
 <ion-content>
-  <!-- <search-bar-workouts (workoutSelected)="onWorkoutSelected($event)"></search-bar-workouts> -->
   <search-bar-workouts (workoutSelected)="onWorkoutSelected($event)"></search-bar-workouts>
-  <app-logging-card [workoutName]="selectedWorkout" (workoutLogged)="resetSearch()"></app-logging-card>
+  <ion-alert
+trigger="present-alert"
+header="A Short Title Is Best"
+subHeader="A Sub Header Is Optional"
+message="A message should be a short, complete sentence."
+>
+</ion-alert>
+  <!-- <search-bar-workouts (workoutSelected)="onWorkoutSelected($event)"></search-bar-workouts> -->
+  <!-- <app-logging-card [workoutName]="selectedWorkout" ></app-logging-card> -->
 
-  <!-- <app-logging-card
+  <app-logging-card
     *ngIf="selectedWorkout"
     [workoutName]="selectedWorkout"
-  ></app-logging-card> -->
+  ></app-logging-card>
 </ion-content>

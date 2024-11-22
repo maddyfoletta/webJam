@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from '../firebase/firebase.service';
-import {CompleteLogCardComponent} from 'src/app/complete-log-card/complete-log-card.component';
+// import {CompleteLogCardComponent} from 'src/app/complete-log-card/complete-log-card.component';
 
 @Component({
   selector: 'app-logging-card',
@@ -13,6 +13,7 @@ export class LoggingCardComponent  implements OnInit {
   formattedDate: string = '';
   showCompleteLogCard: boolean = false;
   showLoggingCard: boolean = true;
+  alertButtons = ['Action'];
 
 
 
@@ -27,16 +28,12 @@ export class LoggingCardComponent  implements OnInit {
     console.log(this.reps, this.weight, this.workoutName);
     //sending info to database
     this.firebaseService.writeStuff(this.workoutName, this.reps, this.weight, this.getTime());
-    this.showCompleteLogCard = true;
     this.showLoggingCard = false;
     this.reps = '';
     this.weight = '';
 
-    setTimeout(() => {
-      this.showCompleteLogCard = false;
-    }, 2000); // 3000ms = 3 seconds
-    // this.searchQuery = ''; // Clear search input if needed
-    // this.filteredWorkouts = this.workouts; // Reset filtered workouts to all workouts
+
+
 
   }
   getTime(): string {
