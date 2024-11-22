@@ -89,39 +89,6 @@ export class SearchBarWorkoutsComponent implements OnInit {
   "Power Snatch",
   "Overhead Squat"
   ];
-  // filteredWorkouts: string[] = [];  // Filtered list of workouts to display
-  // selectedExercise: string | null = null;  // Stores the selected workout
-
-  // constructor() {}
-
-  // ngOnInit() {
-  //   this.filteredWorkouts = this.workouts; // Initialize with all workouts
-  // }
-
-  // // Filter the workouts based on the search query
-  // onSearch() {
-  //   this.filteredWorkouts = this.workouts.filter((workout) =>
-  //     workout.toLowerCase().includes(this.searchQuery.toLowerCase())
-  //   );
-  // }
-
-  // // Handle selection of a workout
-  // @Output() workoutSelected = new EventEmitter<string>();
-
-  // onSelectWorkout(workout: string) {
-  //   this.selectedExercise = workout;  // Update the selected exercise
-  //   this.filteredWorkouts = [];
-  //   this.workoutSelected.emit(this.selectedExercise);
-  // }
-
-  // Reset search query (this can be triggered by a parent component)
-  // resetSearch() {
-  //   this.searchQuery = '';  // Clear the search query
-  //   this.filteredWorkouts = this.workouts;  // Reset filtered list to show all workouts
-  // }
-// }
-
-
 
 
   filteredWorkouts: string[] = []; // Filtered list of workouts to display
