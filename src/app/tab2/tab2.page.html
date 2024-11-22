@@ -7,6 +7,14 @@
 
 <ion-content>
   <search-bar-workouts (workoutSelected)="onWorkoutSelected($event)"></search-bar-workouts>
+  <ion-alert
+    trigger="present-alert"
+    header="A Short Title Is Best"
+    subHeader="A Sub Header Is Optional"
+    message="A message should be a short, complete sentence."
+    >
+  </ion-alert>
+
 
   <app-logging-card
     *ngIf="selectedWorkout"

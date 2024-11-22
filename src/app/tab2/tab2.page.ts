@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 })
 
 export class Tab2Page {
-  selectedWorkout: string | null = null; // Holds the selected workout
+
+  selectedWorkout: string = ''; // Store the selected workout
+
+
   searchQuery: string = ''; // Tracks the user's search input
   isLoggingCardVisible: boolean = false; // Controls the visibility of the logging card
 
@@ -21,4 +24,11 @@ export class Tab2Page {
     this.searchQuery = query; // Update the search query
     this.isLoggingCardVisible = false; // Hide the logging card if typing again
   }
+
+  resetSearch() {
+    this.searchQuery = '';  // Clear the search input
+    this.selectedWorkout = ''; // Reset selected workout
+    this.isLoggingCardVisible = false; // Hide the logging card
+  }
+
 }

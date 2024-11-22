@@ -89,6 +89,8 @@ export class SearchBarWorkoutsComponent implements OnInit {
   "Power Snatch",
   "Overhead Squat"
   ];
+
+
   filteredWorkouts: string[] = []; // Filtered list of workouts to display
 
   selectedExercise: string | null = null; // Stores the selected workout
@@ -104,7 +106,6 @@ export class SearchBarWorkoutsComponent implements OnInit {
       workout.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
-
   // Handle selection of a workout
   @Output() workoutSelected = new EventEmitter<string>();
   // selectedExercise!: string;

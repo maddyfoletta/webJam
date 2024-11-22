@@ -92,8 +92,9 @@ export class FirebaseService {
     return this.formattedDate;
   }
 
-  ///AUTHENTICATION
 
+
+  ///AUTHENTICATION
 
   // // Login with email and password
   // login(email: string, password: string) {
