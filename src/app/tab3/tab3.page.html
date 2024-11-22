@@ -21,6 +21,11 @@
       {{ tag }}
     </ion-chip>
 
+    <ion-item>
+      <ion-label position="floating">Or Enter Your Goals:</ion-label>
+      <ion-input [(ngModel)]="searchQuery" placeholder="e.g., Build Muscle, Cardio"></ion-input>
+    </ion-item>
+
     <ion-button expand="block" (click)="generateWorkout()">Generate Workout</ion-button>
 
     <ion-card *ngIf="workoutPlan">
@@ -33,7 +38,6 @@
           
           <h4>Daily Workouts:</h4>
           <ul>
-            <!-- Iterate through the inner array of day_workouts_with_description[0] -->
             <li *ngFor="let day of workout.day_workouts_with_description[0]">
               {{ day }}
             </li>

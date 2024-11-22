@@ -17,9 +17,9 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 import typing_extensions as typing
 
 class Workout(typing.TypedDict):
-    goals: str
+    client_goals: str
     day_workouts_with_description: list[list[str]]
-    important_considerations: str
+    tips: str
 
 def generate_workout():
     prompt = f"You are a personal trainer. Given the following goals, generate a workout plan for your client."

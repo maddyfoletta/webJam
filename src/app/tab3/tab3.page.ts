@@ -9,21 +9,14 @@ import { HttpClient } from '@angular/common/http';
 export class Tab3Page {
   tags: string[] = ['Lose Weight', 'Build Muscle', 'Improve Endurance', 'Flexibility', 'Cardio'];
   selectedTags: string[] = [];
+  searchQuery: string = ''; // For search bar input
   workoutPlan: { 
     goals: string; 
     day_workouts_with_description: string[][]; 
     important_considerations: string 
   }[] | null = null;
 
-  //DELETE IF
-  selectedWorkout: string | null = null; // Currently selected workout
-
   constructor(private http: HttpClient) {}
-
-  //DELETE IF
-  onWorkoutSelected(workout: string) {
-    this.selectedWorkout = workout; // Update the workout
-  }
 
   toggleTag(tag: string) {
     if (this.selectedTags.includes(tag)) {
@@ -34,33 +27,26 @@ export class Tab3Page {
   }
 
   generateWorkout() {
-    if (this.selectedTags.length === 0) {
-      alert('Please select at least one tag!');
+    const keywords = this.searchQuery.trim() || this.selectedTags.join(', '); // Prioritize searchQuery
+
+    if (!keywords) {
+      alert('Please enter a goal or select at least one tag!');
       return;
     }
 
-    const keywords = this.selectedTags.join(', ');
-
     this.http.post<any>('http://127.0.0.1:5000', { keywords })
-    .subscribe(
-      (response) => {
-        if (response && response.workout_plan) {
+      .subscribe(
+        (response) => {
           try {
-            this.workoutPlan = JSON.parse(response.workout_plan); // Ensure parsing if it’s a JSON string
-          } catch (e) {
-            this.workoutPlan = response.workout_plan; // Already parsed
+            this.workoutPlan = JSON.parse(response.workout_plan);
+          } catch {
+            this.workoutPlan = response.workout_plan;
           }
-          console.log('Workout Plan:', this.workoutPlan);
-        } else {
-          console.error("No workout plan returned:", response);
-          alert('Error: No workout plan returned.');
+        },
+        (error) => {
+          console.error('Error generating workout:', error);
+          alert('Error generating workout. Please try again.');
         }
-      },
-      (error) => {
-        console.error("Error generating workout:", error);
-        alert('Error generating workout. Please try again.');
-      }
-    );
-  
+      );
   }
 }
