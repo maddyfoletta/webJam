@@ -27,6 +27,7 @@ def generate_workout():
     generation_config=genai.GenerationConfig(response_mime_type="application/json", response_schema=list[Workout]))
 
     workouts = json.loads(response.text)
+    print(type(workouts))
     return workouts
 
 

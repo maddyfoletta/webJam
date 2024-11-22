@@ -1,36 +1,49 @@
-<div class="ion-card-wrapper">
-  <!-- Logging Card -->
-  <ion-card class="ion-card" *ngIf="showLoggingCard && workoutName">
-    <ion-card-header>
-      <ion-card-title>{{ workoutName }}</ion-card-title>
-      <ion-card-subtitle>Weight:</ion-card-subtitle>
-    </ion-card-header>
 
-    <ion-card-content>
-      <ion-item class="enter-reps">
-        <ion-input
-          class="enter-reps-input"
-          label="Enter reps: "
-          placeholder="Enter number of reps"
-          [(ngModel)]="reps"
-        ></ion-input>
-      </ion-item>
-      <ion-item class="enter-new-weight">
-        <ion-input
-          [(ngModel)]="weight"
-          label="Enter new weight: "
-          placeholder="Enter weight in lbs"
-        ></ion-input>
-      </ion-item>
+<div *ngIf="showLoggingCard">
+  <div class="ion-card-wrapper">
+    <!-- Logging Card -->
+    <ion-card class="ion-card" *ngIf="showLoggingCard && workoutName">
+      <ion-card-header>
+        <ion-card-title>{{ workoutName }}</ion-card-title>
+        <ion-card-subtitle>Weight:</ion-card-subtitle>
+      </ion-card-header>
 
-      <!-- Button triggers the enterClick() function -->
-      <ion-button (click)="enterClick()">Enter new weight</ion-button>
-    </ion-card-content>
-  </ion-card>
+      <ion-card-content>
+        <ion-item class="enter-reps">
+          <ion-input
+            class="enter-reps-input"
+            label="Enter reps: "
+            placeholder="Enter number of reps"
+            [(ngModel)]="reps"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="enter-new-weight">
+          <ion-input
+            [(ngModel)]="weight"
+            label="Enter new weight: "
+            placeholder="Enter weight in lbs"
+          ></ion-input>
+        </ion-item>
 
-  <!-- Complete Log Card -->
-  <app-complete-log-card *ngIf="showCompleteLogCard"></app-complete-log-card>
+        <!-- Button triggers the enterClick() function -->
+        <ion-button (click)="enterClick()" id="present-alert">Enter new weight</ion-button>
+          <ion-alert
+            trigger="present-alert"
+            header="A Short Title Is Best"
+            subHeader="A Sub Header Is Optional"
+            message="A message should be a short, complete sentence."
+            [buttons]="alertButtons"
+          ></ion-alert>
+      </ion-card-content>
+      <!-- <ion-card class="log-complete-message" *ngIf="showCompleteLogCard">
+        <ion-card-header>
+          <ion-card-title>Log Complete!</ion-card-title>
+        </ion-card-header>
+      </ion-card> -->
+    </ion-card>
+  </div>
 </div>
+
 
 
 

@@ -6,7 +6,7 @@ import { Tab2Page } from './tab2.page';
 import { SearchBarWorkoutsComponent } from '../search-bar-workouts/search-bar-workouts.component';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { LoggingCardComponent } from '../logging-card/logging-card.component';
-import {CompleteLogCardComponent} from 'src/app/complete-log-card/complete-log-card.component';
+// import {CompleteLogCardComponent} from 'src/app/complete-log-card/complete-log-card.component';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import {CompleteLogCardComponent} from 'src/app/complete-log-card/complete-log-c
     FormsModule,
     Tab2PageRoutingModule
   ],
-  declarations: [Tab2Page, SearchBarWorkoutsComponent, LoggingCardComponent, CompleteLogCardComponent]
+  declarations: [Tab2Page, SearchBarWorkoutsComponent, LoggingCardComponent]
 })
 export class Tab2PageModule {}
