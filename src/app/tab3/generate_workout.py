@@ -8,9 +8,10 @@ import json
 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+#CORS(app)  # Enable CORS for all routes
+CORS(app, origins=["http://localhost:8100"])
 
-load_dotenv(dotenv_path='src/app/tab3/keys.env')
+load_dotenv(dotenv_path='webJam/src/app/tab3/keys.env')
 
 api_key = os.getenv('API_KEY')
 print(api_key)
@@ -27,6 +28,9 @@ def generate_workout():
         goals: str
         day_workouts_with_description: list[list[str]]
         important_considerations: str
+=======
+    print("PRINTING NOW")
+>>>>>>> 61e665957d5e9c85ac01f7ff427351ca9453db95
 
     if not keywords:
         return jsonify({"error": "Keywords are required"}), 400
