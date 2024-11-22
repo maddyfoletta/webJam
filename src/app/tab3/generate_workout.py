@@ -36,7 +36,7 @@ def generate_workout():
     response = model.generate_content([prompt, 'full body'],
     generation_config=genai.GenerationConfig(response_mime_type="application/json", response_schema=list[Workout]))
 
-    #workouts = json.loads(response.text)
+    workouts = json.loads(response.text)
     return jsonify({"workout_plan": response.text})
     
 

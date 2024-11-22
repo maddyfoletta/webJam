@@ -9,7 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class Tab3Page {
   tags: string[] = ['Lose Weight', 'Build Muscle', 'Improve Endurance', 'Flexibility', 'Cardio'];
   selectedTags: string[] = [];
-  workoutPlan: string[] | null = null;
+  workoutPlan: { 
+    goals: string; 
+    day_workouts_with_description: string[][]; 
+    important_considerations: string 
+  }[] | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -30,20 +34,25 @@ export class Tab3Page {
     const keywords = this.selectedTags.join(', ');
   
     this.http.post<any>('http://127.0.0.1:5000', { keywords })
-      .subscribe(
-        (response) => {
-          if (response && response.workout_plan) {
-            this.workoutPlan = response.workout_plan;
-            console.log('Workout Plan:', this.workoutPlan);
-          } else {
-            console.error("No workout plan returned:", response);
-            alert('Error: No workout plan returned.');
+    .subscribe(
+      (response) => {
+        if (response && response.workout_plan) {
+          try {
+            this.workoutPlan = JSON.parse(response.workout_plan); // Ensure parsing if it’s a JSON string
+          } catch (e) {
+            this.workoutPlan = response.workout_plan; // Already parsed
           }
-        },
-        (error) => {
-          console.error("Error generating workout:", error);
-          alert('Error generating workout. Please try again.');
+          console.log('Workout Plan:', this.workoutPlan);
+        } else {
+          console.error("No workout plan returned:", response);
+          alert('Error: No workout plan returned.');
         }
-      );
+      },
+      (error) => {
+        console.error("Error generating workout:", error);
+        alert('Error generating workout. Please try again.');
+      }
+    );
+  
   }
-}  
+}
